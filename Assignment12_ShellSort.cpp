@@ -43,9 +43,8 @@ void ShellSort::shell_sort()
 			temp=a[i];
 			for(j=i;j>=step;j=j-step)
 			{
-				if(a[j]<a[j-step])
+				if(temp<a[j-step])
 				{
-					temp=a[j];
 					a[j]=a[j-step];
 					a[j-step]=temp;
 				}
