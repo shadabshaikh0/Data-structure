@@ -194,7 +194,7 @@ void matrix::multiplication()
 	}
 		for(int i=0;i<row1;i++)
 		{
-			for(int j=0;j<column1;j++)
+			for(int j=0;j<column2;j++)
 			{
 				cout<<"\t"<<c[i][j];
 			}
