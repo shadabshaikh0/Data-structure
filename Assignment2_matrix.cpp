@@ -183,12 +183,12 @@ void matrix::multiplication()
 	gettwomatrix();
 	for(int i=0;i<row1;i++)
 	{
-		for(int j=0;j<column1;j++)
+		for(int j=0;j<column2;j++)
 		{
 			c[i][j]=0;
 			for(int k=0;k<column1;k++)
 			{
-			c[i][j]+=a[i][k]+b[k][j];
+			c[i][j]+=a[i][k]*b[k][j];
 			}
 		}
 	}
