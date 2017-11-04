@@ -7,6 +7,7 @@
 //============================================================================
 
 #include <iostream>
+#include<string.h>
 using namespace std;
 
 typedef struct node
@@ -34,7 +35,7 @@ public:
 	void display_reverse(node *);
 	void sort();
 	void concatenate(node *second);
-	void merge1(node *second);
+	void merge1(node*);
 };
 void pinnacle_club::add_president()
 {
@@ -203,7 +204,7 @@ void pinnacle_club::sort()
 {
 	node *ptr1,*ptr2;
 	char temp[10];
-	int temp=0,n=0;
+	int temp1=0,n=0;
 	ptr=ptr1=head;
 	ptr2=ptr1->next;
 	while(ptr!=NULL)
@@ -217,11 +218,11 @@ void pinnacle_club::sort()
 		{
 			if((ptr1->prn)>(ptr2->prn))
 			{
-				temp=ptr1->prn;
+				temp1=ptr1->prn;
 				strcpy(temp,ptr1->name);
 				ptr1->prn=ptr2->prn;
 				strcpy(ptr1->name,ptr2->name);
-				ptr2->prn=temp;
+				ptr2->prn=temp1;
 				strcpy(ptr2->name,temp);
 			}
 			ptr1=ptr1->next;
@@ -244,9 +245,7 @@ void pinnacle_club::concatenate(node *second)
  void pinnacle_club::merge1(node *second)
 {
 
-	 cout<<"hii";
-
-node *first=head;
+	 node *first=head;
 	 temp=NULL;
 	if(first->prn<second->prn)
 	{
@@ -258,6 +257,7 @@ node *first=head;
 		temp=ptr=second;
 		second=second->next;
 	}
+
 	while(first!=NULL && second!=NULL)
 	{
 		if(first->prn<second->prn)
@@ -276,12 +276,16 @@ node *first=head;
 	 while(first!=NULL)
 	 {
 		 ptr->next=first;
+		 first=first->next;
+		 ptr=ptr->next;
 	 }
 	 while(second!=NULL)
 	 {
 		 ptr->next=second;
+		 second=second->next;
+		 ptr=ptr->next;
 	 }
-	head=temp;
+
 }
 int main()
 {
@@ -355,7 +359,6 @@ int main()
 			break;
 		case 13:
 			p.merge1(q.head);
-			cout<<"vb";
 			break;
 		case 14:
 			q.display();
