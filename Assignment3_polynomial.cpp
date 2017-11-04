@@ -46,12 +46,12 @@ public:
 		polynomial temp;
 		for(i=0,j=0;i<=p1.degree && j<=p2.degree;)
 		{
-			if(i>j)
+			if(i<j)
 			{
 				temp.poly[k++]=p2.poly[j];
 				j++;
 			}
-			else if(j>i)
+			else if(j<i)
 			{
 				temp.poly[k++]=p1.poly[i];
 				i++;
