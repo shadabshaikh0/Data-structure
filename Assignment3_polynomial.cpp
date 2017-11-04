@@ -42,28 +42,136 @@ public:
 
 	friend polynomial operator+(polynomial p1,polynomial p2)
 	{
-		int i,j,k=0;
+//============================================================================
+2
+// Name        : Assignment3_polynomial.cpp
+3
+// Author      : shadab shaikh
+4
+// Version     :
+5
+// Copyright   : Your copyright notice
+6
+// Description : Hello World in C++, Ansi-style
+7
+//============================================================================
+8
+​
+9
+#include <iostream>
+10
+#include<math.h>
+11
+using namespace std;
+12
+class polynomial
+13
+{
+14
+        int poly[10],degree;
+15
+public:
+16
+        friend istream& operator>>(istream &in,polynomial &p)
+17
+        {
+18
+                cout<<"\nEnter degree of polynomial\n";
+19
+                cin>>p.degree;
+20
+                cout<<"\nEnter coefficient of polynomial\n";
+21
+                for(int i=p.degree;i>=0;i--)
+22
+                {
+23
+                        in>>p.poly[i];
+24
+                }
+25
+                return in;
+26
+        }
+27
+        friend ostream& operator<<(ostream &out,polynomial &p)
+28
+        {
+29
+                for(int i=p.degree;i>=0;i--)
+30
+                {
+31
+                        if(i==0)
+32
+                        {
+33
+                                out<<"("<<p.poly[i]<<")";
+34
+                        }
+35
+                        else
+36
+                        {
+37
+                        out<<"("<<p.poly[i]<<"x^"<<i<<")+";
+38
+                        }
+39
+                }
+40
+                return out;
+41
+        }
+42
+​
+43
+        friend polynomial operator+(polynomial p1,polynomial p2)
+44
+        {
+45
+                int i,j,k=0;
+46
+                polynomial temp;
+47
+                for(i=0,j=0;i<=p1.degree && j<=p2.degree;)
+48
+                {
+49
+                        if(i<j)		int i,j,k;
 		polynomial temp;
-		for(i=0,j=0;i<=p1.degree && j<=p2.degree;)
+		for(int i=0;i<10;i++)
+		{
+			temp.poly[i]=0;
+		}
+		if(p1.degree>p2.degree)
+		{
+			temp.degree=p1.degree;
+		}
+		else
+		{
+			temp.degree=p2.degree;
+		}
+		k=temp.degree;
+		for(i=p1.degree,j=p2.degree;k>=0;)
 		{
 			if(i<j)
 			{
-				temp.poly[k++]=p2.poly[j];
-				j++;
+				temp.poly[k--]=p2.poly[j];
+				j--;
 			}
 			else if(j<i)
 			{
-				temp.poly[k++]=p1.poly[i];
-				i++;
+				temp.poly[k--]=p1.poly[i];
+				i--;
 			}
 			else
 			{
-				temp.poly[k++]=p1.poly[i]+p2.poly[j];
-				i++;
-				j++;
+				temp.poly[k--]=p1.poly[i]+p2.poly[j];
+				i--;
+				j--;
 			}
 		}
-		temp.degree=k-1;
 		return temp;
 	}
 
