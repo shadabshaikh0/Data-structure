@@ -202,6 +202,7 @@ void pinnacle_club::display_reverse(node *head)
 void pinnacle_club::sort()
 {
 	node *ptr1,*ptr2;
+	char temp[10];
 	int temp=0,n=0;
 	ptr=ptr1=head;
 	ptr2=ptr1->next;
@@ -217,8 +218,11 @@ void pinnacle_club::sort()
 			if((ptr1->prn)>(ptr2->prn))
 			{
 				temp=ptr1->prn;
+				strcpy(temp,ptr1->name);
 				ptr1->prn=ptr2->prn;
+				strcpy(ptr1->name,ptr2->name);
 				ptr2->prn=temp;
+				strcpy(ptr2->name,temp);
 			}
 			ptr1=ptr1->next;
 			ptr2=ptr2->next;
