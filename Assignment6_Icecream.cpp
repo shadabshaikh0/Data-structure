@@ -118,7 +118,7 @@ void Butterscotch::display()
 
 int union_of_butterscotch_and_vanila(Vanila v,Butterscotch b)
 {
-	int cnt;
+	int cnt=0;
 	node *x=v.head;
 	node *y;
 	int found;
