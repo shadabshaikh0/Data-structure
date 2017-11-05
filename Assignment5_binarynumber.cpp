@@ -149,16 +149,33 @@ Binaryop Binaryop:: addition(Binaryop b)
 			n1=n1->prev;
 			n2=n2->prev;
 	}
-	while(n1!=NULL)
-	{
-		sum.add(n1->data^carry);
-		n1=n1->prev;
-	}
-	while(n2!=NULL)
-	{
-		sum.add(n2->data^carry);
-		n2=n2->prev;
-	}
+			while(n1!=NULL)
+			{
+				sum.add(n1->data^carry);
+				if(n1->data==1 && carry==1)
+				{
+					carry=1;
+				}
+				else if(n1->data==0 && carry==1)
+				{
+					carry=0;
+				}
+				n1=n1->prev;
+			}
+			while(n2!=NULL)
+			{
+				sum.add(n2->data^carry);
+				if(n2->data==1 && carry==1)
+				{
+					carry=0;
+				}
+				else if(n2->data==0 && carry==1)
+				{
+					carry=1;
+				}
+				n2=n2->prev;
+			}
+
 	sum.add(carry);
 	return sum;
 }
